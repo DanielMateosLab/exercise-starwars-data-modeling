@@ -66,7 +66,7 @@ class Starship_Favourites(Base):
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey('user.id'), nullable=False)
     user = relationship(User)
-    starship_id = Column(Integer, ForeignKey('startship.id'), nullable=False)
+    starship_id = Column(Integer, ForeignKey('starship.id'), nullable=False)
     starship = relationship(Starship)
 
 
