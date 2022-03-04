@@ -14,12 +14,6 @@ class User(Base):
     email = Column(String(250), nullable=False, unique=True)
     password = Column(String(250), nullable=False)
 
-class Starship_Favourites(Base):
-    __tablename__ = 'starship_favourites'
-    id = Column(Integer, primary_key=True)
-    user_id = Column(Integer, ForeignKey('user.id'), nullable=False)
-    user = relationship(User)
-
 class Planet(Base):
     __tablename__ = 'planet'
     id = Column(Integer, primary_key=True)
@@ -48,6 +42,15 @@ class Starship(Base):
 	manufacturer = Column(String(40), nullable=False, unique=True)
 	crew = Column(Integer, nullable=False)
 	passengers = Column(Integer, nullable=False)
+
+class Starship_Favourites(Base):
+    __tablename__ = 'starship_favourites'
+    id = Column(Integer, primary_key=True)
+    user_id = Column(Integer, ForeignKey('user.id'), nullable=False)
+    user = relationship(User)
+    starship_id = Column(Integer, ForeignKey('startship.id'), nullable=False)
+    startship = relationship(Starship)
+
 
 ## Draw from SQLAlchemy base
 render_er(Base, 'diagram.png')
