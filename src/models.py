@@ -56,8 +56,8 @@ class Starship(Base):
     __tablename__ = 'starship'
     id = Column(Integer, primary_key=True)
     name = Column(String(40), nullable=False, unique=True)
-    model = Column(String(40), nullable=False, unique=True)
-	manufacturer = Column(String(40), nullable=False, unique=True)
+    model = Column(String(40), nullable=False)
+	manufacturer = Column(String(40), nullable=False)
 	crew = Column(Integer, nullable=False)
 	passengers = Column(Integer, nullable=False)
 
