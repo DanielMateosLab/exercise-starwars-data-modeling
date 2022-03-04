@@ -34,6 +34,15 @@ class Character(Base):
     height = Column(Integer, nullable=False)
     homeplanet = Column(Integer, ForeignKey('planet.id'), nullable=False)
 
+class Character_Favourites(Base):
+    __tablename__ = 'character_favourites'
+    id = Column(Integer, primary_key=True)
+    user_id = Column(Integer, ForeignKey('user.id'), nullable=False)
+    user = relationship(User)
+    character_id = Column(Integer, ForeignKey('character.id'), nullable=False)
+    character = relationship(Character)
+
+
 class Starship(Base):
     __tablename__ = 'starship'
     id = Column(Integer, primary_key=True)
@@ -49,7 +58,7 @@ class Starship_Favourites(Base):
     user_id = Column(Integer, ForeignKey('user.id'), nullable=False)
     user = relationship(User)
     starship_id = Column(Integer, ForeignKey('startship.id'), nullable=False)
-    startship = relationship(Starship)
+    starship = relationship(Starship)
 
 
 ## Draw from SQLAlchemy base
