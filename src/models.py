@@ -25,6 +25,15 @@ class Planet(Base):
     orbital_period = Column(Integer, nullable=False)
     population = Column(Integer, nullable=False)
 
+class Planet_Favourites(Base):
+    __tablename__ = 'planet_favourites'
+    id = Column(Integer, primary_key=True)
+    user_id = Column(Integer, ForeignKey('user.id'), nullable=False)
+    user = relationship(User)
+    planet_id = Column(Integer, ForeignKey('planet.id'), nullable=False)
+    planet = relationship(Planet)
+
+
 class Character(Base):
     __tablename__ = 'character'
     id = Column(Integer, primary_key=True)
